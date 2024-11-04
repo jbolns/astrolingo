@@ -1,14 +1,19 @@
 ---
+import type { Multi } from "@types";
+import { defaultLang } from "@i18n/ui";
+
 interface Props {
 	date: Date;
 }
 
+const LOCALE: keyof Multi = Astro.currentLocale || defaultLang;
 const { date } = Astro.props;
+
 ---
 
 <time datetime={date.toISOString()}>
 	{
-		date.toLocaleDateString('en-us', {
+		date.toLocaleDateString(LOCALE, {
 			year: 'numeric',
 			month: 'short',
 			day: 'numeric',

@@ -1,0 +1,36 @@
+---
+// IMPORTS
+// Components
+import BaseHead from "@components/BaseHead.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import Pagination from "@components/Pagination.astro";
+
+// Config & content
+import { defaultLang } from "@i18n/ui";
+import { SITE } from "@i18n/sections";
+
+// TYPES
+import type { Multi } from "@types";
+
+// FUNCTIONS & ACTIONS
+const { page } = Astro.props;
+const LOCALE: keyof Multi = Astro.currentLocale || defaultLang;
+---
+
+<html lang={LOCALE}>
+	<head>
+		<BaseHead
+			title={SITE.TITLE[LOCALE]}
+			description={SITE.DESCRIPTION[LOCALE]}
+		/>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<slot />
+			<Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+		</main>
+		<Footer />
+	</body>
+</html>

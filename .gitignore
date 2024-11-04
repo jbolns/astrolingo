@@ -1,5 +1,10 @@
+# build files
+.admin
+.vscode
+
 # build output
 dist/
+
 # generated types
 .astro/
 

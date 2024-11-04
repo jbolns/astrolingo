@@ -1,0 +1,85 @@
+---
+// IMPORTS
+// Components
+import BaseHead from "@components/BaseHead.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+
+// Config & content
+import { SITE } from "@i18n/sections";
+import { defaultLang } from "@i18n/ui";
+
+// TYPES
+import type { Multi } from "@types";
+
+// FUNCTIONS & ACTIONS
+const LOCALE: keyof Multi = Astro.currentLocale || defaultLang;
+---
+
+<!doctype html>
+<html lang={LOCALE}>
+  <head>
+    <BaseHead
+      title={SITE.TITLE[LOCALE]}
+      description={SITE.DESCRIPTION[LOCALE]}
+    />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1>🧑‍🚀 Hola, Astronauta multilingue!</h1>
+
+      <p>
+        <strong>AstroLingo</strong> es una plantilla/tema para sitios <a
+          href="https://astro.build/">Astro</a
+        >. Añade soporte para multiples idiomas a la <a
+          href="https://astro.build/themes/details/blog/"
+          >plantilla de blog minimalista</a
+        > de Astro.
+      </p>
+
+      <p>
+        AstroLingo se ha probado con hasta tres idiomas, pero aguanta más. Es posible gregar nuevos idiomas
+        fácilmente y a lo largo del tiempo.
+      </p>
+
+      <h2>Características</h2>
+      <strong>Heredadas de la plantilla de blog minimalista de Astro:</strong>
+      <ul>
+        <li>✅ Estilos mínimos (hazlo tuyo/a!)</li>
+        <li>✅ 100/100 calificación de Lighthouse</li>
+        <li>✅ Optimizado para SEO con URL canónicas y datos OpenGraph</li>
+        <li>✅ Soporte para mapas del sitio</li>
+        <li>✅ Soporte para feeds RSS</li>
+        <li>✅ Soporte para Markdown & MDX.</li>
+      </ul>
+
+      <strong>Adicionales:</strong>
+      <ul>
+        <li>✅ Página en multiples idiomas</li>
+        <li>✅ Blogs en multiples idiomas</li>
+        <li>✅ Tags en multiples idiomas</li>
+        <li>✅ URLs en multiples idiomas</li>
+        <li>✅ Paginación multilingüe (para ambos, blogs y tags)</li>
+        <li>
+          ✅ Páginas personalizables de forma independiente (las páginas en
+          diferentes idiomas pueden tener estilos propios).
+        </li>
+      </ul>
+      <p>¡Diviértete!</p>
+      <p>---</p>
+      <p>
+        PD. Para documentación más detallada, leéte este <a
+          href="https://github.com/jbolns/astrolingo"
+          target="_blank">repositorio GitHub</a
+        >.
+      </p>
+      <p>
+        PPD. Visita <a href="https://www.josebolanos.xyz/" target="_blank"
+          >mi sitio</a
+        > para un ejemplo de lo que AstroLingo permite.
+      </p>
+    </main>
+    <Footer />
+  </body>
+</html>

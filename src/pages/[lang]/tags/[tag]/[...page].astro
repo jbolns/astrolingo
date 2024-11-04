@@ -1,0 +1,84 @@
+---
+// IMPORTS
+// Astro
+import { type CollectionEntry, getCollection } from "astro:content";
+import { type GetStaticPathsOptions } from "astro";
+
+// Components
+import BlogRollLayout from "@layouts/BlogRoll.astro";
+import CategoriesPreview from "@components/CategoriesPreview.astro";
+import BlogEntryPreview from "@components/BlogEntryPreview.astro";
+
+// Config & content
+import type { Multi } from "@types";
+import { languages, defaultLang } from "@i18n/ui";
+
+// TYPES
+// Quick type for blog entries
+type Post = CollectionEntry<"blog">;
+
+// FUNCTIONS & ACTIONS
+// Identify page language
+const LOCALE: keyof Multi = Astro.currentLocale || defaultLang;
+
+// Generates paths for all tags in website, according to language.
+// (Quite a head scratcher, this one. Took me a full day to figure it out.)
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+	// Getting all posts and sort them
+	const posts: CollectionEntry<"blog">[] = (await getCollection("blog")).sort(
+		(a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+			b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+	);
+
+	//Get all languages
+	const LOCALES = Object.keys(languages);
+
+	// Split tags into languages
+	let splitTags: string[][] = [];
+	LOCALES.map((LOCALE) => {
+		const tags = [
+			...new Set(
+				posts
+					.filter((post) => post.slug.startsWith(LOCALE))
+					.map((post) => post.data.tags)
+					.flat(),
+			),
+		];
+
+		splitTags.push(tags);
+	});
+
+	// Generate routes per language per tag group
+	let i = -1; // Starts on -1 so counter can be updated at the top
+
+	// Map by language
+	return LOCALES.flatMap((LOCALE) => {
+		i = i + 1;
+
+		// Map by tag group
+		return splitTags[i].flatMap((tag) => {
+			// Filter posts by tag (itself part of a group belonging to specific language)
+			const filteredPosts = posts.filter((post) =>
+				post.data.tags.includes(tag),
+			);
+
+			return paginate(filteredPosts, {
+				params: { lang: LOCALE, tag },
+				props: { splitTags },
+				pageSize: 3,
+			});
+		});
+	});
+}
+
+const { splitTags, page } = Astro.props;
+---
+
+<BlogRollLayout page={page}>
+	<CategoriesPreview tags={splitTags} LOCALE={LOCALE} />
+	<section class="blogroll">
+		<ul>
+			{page.data.map((post: Post) => <BlogEntryPreview post={post} />)}
+		</ul>
+	</section>
+</BlogRollLayout>

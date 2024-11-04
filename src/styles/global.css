@@ -15,6 +15,7 @@
 	--box-shadow: 0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
 		0 16px 32px rgba(var(--gray), 33%);
 }
+
 @font-face {
 	font-family: 'Atkinson';
 	src: url('/fonts/atkinson-regular.woff') format('woff');
@@ -22,6 +23,7 @@
 	font-style: normal;
 	font-display: swap;
 }
+
 @font-face {
 	font-family: 'Atkinson';
 	src: url('/fonts/atkinson-bold.woff') format('woff');
@@ -29,6 +31,7 @@
 	font-style: normal;
 	font-display: swap;
 }
+
 body {
 	font-family: 'Atkinson', sans-serif;
 	margin: 0;
@@ -42,12 +45,14 @@ body {
 	font-size: 20px;
 	line-height: 1.7;
 }
+
 main {
 	width: 720px;
 	max-width: calc(100% - 2em);
 	margin: auto;
 	padding: 3em 1em;
 }
+
 h1,
 h2,
 h3,
@@ -58,78 +63,99 @@ h6 {
 	color: rgb(var(--black));
 	line-height: 1.2;
 }
+
 h1 {
 	font-size: 3.052em;
 }
+
 h2 {
 	font-size: 2.441em;
 }
+
 h3 {
 	font-size: 1.953em;
 }
+
 h4 {
 	font-size: 1.563em;
 }
+
 h5 {
 	font-size: 1.25em;
 }
+
 strong,
 b {
 	font-weight: 700;
 }
+
 a {
 	color: var(--accent);
 }
+
 a:hover {
 	color: var(--accent);
 }
+
 p {
 	margin-bottom: 1em;
 }
+
 .prose p {
 	margin-bottom: 2em;
 }
+
 textarea {
 	width: 100%;
 	font-size: 16px;
 }
+
 input {
 	font-size: 16px;
 }
+
 table {
 	width: 100%;
 }
+
 img {
 	max-width: 100%;
 	height: auto;
 	border-radius: 8px;
 }
+
 code {
 	padding: 2px 5px;
 	background-color: rgb(var(--gray-light));
 	border-radius: 2px;
 }
+
 pre {
 	padding: 1.5em;
 	border-radius: 8px;
 }
-pre > code {
+
+pre>code {
 	all: unset;
 }
+
 blockquote {
 	border-left: 4px solid var(--accent);
 	padding: 0 0 0 20px;
 	margin: 0px;
 	font-size: 1.333em;
 }
+
 hr {
 	border: none;
 	border-top: 1px solid rgb(var(--gray-light));
 }
+
 @media (max-width: 720px) {
 	body {
 		font-size: 18px;
 	}
+
 	main {
 		padding: 1em;
 	}
@@ -151,4 +177,313 @@ hr {
 	clip-path: inset(50%);
 	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
+}
+
+
+/*
+  The CSS below is based off of Astro's minimalistic Blog template, with minor changes for compatibility and styling of i18n features.
+	The original template contains CSS in <style> tags across documents. 
+	In this template, CSS was extracted entirely into this file for easier readability.
+	
+	Template: https://github.com/withastro/astro/tree/main/examples/blog
+  License MIT: https://github.com/withastro/astro/blob/main/LICENSE.
+
+ */
+
+/* Site wide */
+
+
+/* Header */
+header {
+	margin: 0;
+	padding: 0 1em;
+	background: white;
+	box-shadow: 0 2px 8px rgba(var(--black), 5%);
+}
+
+header h2 {
+	margin: 0;
+	font-size: 1em;
+}
+
+header h2 a,
+header h2 a.active {
+	text-decoration: none;
+}
+
+header a {
+	display: inline-block;
+	text-decoration: none;
+}
+
+header a.active {
+	font-weight: bolder;
+	text-decoration: underline;
+}
+
+nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+nav a {
+	padding: 1em 0.5em;
+	color: var(--black);
+	border-bottom: 4px solid transparent;
+	text-decoration: none;
+}
+
+nav a.active {
+	text-decoration: none;
+	border-bottom-color: var(--accent);
+}
+
+.language-picker {
+	list-style-type: none;
+	font-size: small;
+}
+
+.language-picker ul {
+	flex-wrap: nowrap;
+	gap: 0;
+}
+
+.language-picker li,
+.language-picker a {
+	display: inline;
+	margin: 0;
+}
+
+/* Blog listings */
+.blogroll ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2rem;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.blogroll ul li {
+	width: calc(50% - 1rem);
+}
+
+.blogroll ul li * {
+	text-decoration: none;
+	transition: 0.2s ease;
+}
+
+.blogroll ul li:first-child {
+	width: 100%;
+	margin-bottom: 1rem;
+	text-align: center;
+}
+
+.blogroll ul li:first-child img {
+	width: 100%;
+}
+
+.blogroll ul li:first-child .title {
+	font-size: 2.369rem;
+}
+
+.blogroll ul li img {
+	margin-bottom: 0.5rem;
+	border-radius: 12px;
+}
+
+.blogroll ul li a {
+	display: block;
+}
+
+.blogroll .title {
+	margin: 0;
+	color: rgb(var(--black));
+	line-height: 1;
+}
+
+.blogroll .date {
+	margin: 0;
+	color: rgb(var(--gray));
+}
+
+.blogroll ul li a:hover h4,
+.blogroll ul li a:hover .date {
+	color: rgb(var(--accent));
+}
+
+.blogroll ul a:hover img {
+	box-shadow: var(--box-shadow);
+}
+
+.tagcloud {
+	display: inline-block;
+	list-style-type: none;
+	margin-bottom: 0 auto 21px;
+	border-radius: 7px;
+	padding-left: 0;
+	margin-left: 0;
+}
+
+.tagcloud li {
+	float: right;
+	margin: 0 14px 0 0;
+	padding: 14px;
+	text-transform: capitalize;
+	border: 1px dotted;
+	background: rgba(203, 182, 204, 0.5);
+}
+
+.tagcloud a {
+	color: black;
+}
+
+
+/* Blog posts */
+.blogpost .hero-image {
+	width: 100%;
+}
+
+.blogpost .hero-image img {
+	display: block;
+	margin: 0 auto;
+	border-radius: 12px;
+	box-shadow: var(--box-shadow);
+}
+
+.blogpost .prose {
+	width: 720px;
+	max-width: calc(100% - 2em);
+	margin: auto;
+	padding: 1em;
+	color: rgb(var(--gray-dark));
+}
+
+.blogpost .title {
+	margin-bottom: 1em;
+	padding: 1em 0;
+	text-align: center;
+	line-height: 1;
+}
+
+.blogpost .title h1 {
+	margin: 0 0 0.5em 0;
+}
+
+.blogpost .date {
+	margin-bottom: 0.5em;
+	color: rgb(var(--gray));
+}
+
+.blogpost .last-updated-on {
+	font-style: italic;
+}
+
+/* Footer */
+footer {
+	padding: 2em 1em 6em 1em;
+	background: linear-gradient(var(--gray-gradient)) no-repeat;
+	color: rgb(var(--gray));
+	text-align: center;
+}
+
+.social-links {
+	display: flex;
+	justify-content: center;
+	gap: 1em;
+	margin-top: 1em;
+}
+
+.social-links a {
+	text-decoration: none;
+	color: rgb(var(--gray));
+}
+
+.social-links a:hover {
+	color: rgb(var(--gray-dark));
+}
+
+/* Pagination */
+.pagination {
+	width: 100%;
+}
+
+.pagination ul {
+	display: ruby;
+	margin: auto;
+	list-style-type: none;
+}
+
+.pagination ul li {
+	padding: 14px;
+	text-align: center;
+	border: 1px dotted;
+	background: linear-gradient(90deg, rgb(156, 33, 238) 0%, rgb(22, 173, 166) 50%);
+	background-size: 400% 400%;
+	animation: PaginationAnimation 45s ease infinite;
+}
+
+@keyframes PaginationAnimation {
+	0% {
+		background-position: 1% 0%
+	}
+
+	50% {
+		background-position: 99% 100%
+	}
+
+	100% {
+		background-position: 1% 0%
+	}
+}
+
+.pagination a {
+	font-size: xx-large;
+}
+
+/* Main welcome page (shared index.astro) */
+.welcome {
+	margin-top: 40vh;
+	text-align: center;
+	font-weight: 600;
+}
+
+.welcome .language-picker {	
+	margin: 0;
+	padding: 0;
+	font-size: x-large;
+}
+
+.welcome .language-picker li::after {
+	margin: 0 7px;
+	content: "|";
+}
+
+.welcome .language-picker li:last-child::after {
+	content: "";
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 720px) {
+	main ul {
+		gap: 0.5em;
+	}
+
+	main ul li {
+		width: 100%;
+	}
+
+	main ul li:first-child {
+		margin-bottom: 0;
+	}
+
+	main ul li:first-child .title {
+		font-size: 1.563em;
+	}
+
+	.welcome .language-picker {	
+		font-size: large;
+	}
 }
