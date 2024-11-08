@@ -18,20 +18,24 @@ const routes: Multi | string = getRoutes(slug);
 ---
 
 <ul class="language-picker">
-  {
+	{
 		Object.keys(languages).map((l) => (
-			<a
-				href={sanitizeRoutes(
-					typeof routes === "object"
-						? currentPath
-								.replace(`/${locale}/`, `/${l}/`)
-								.replace(`/${slug}/`, `/${routes[l]}/`)
-								.replace(`/${slug}`, `/${routes[l]}/`)
-						: currentPath
-								.replace(`/${locale}/`, `/${l}/`)
-								.replace(`/${locale}`, `/${l}/`),
-				)}
-			>{l}</a>
+			<li>
+				<a
+					href={sanitizeRoutes(
+						typeof routes === "object"
+							? currentPath
+									.replace(`/${locale}/`, `/${l}/`)
+									.replace(`/${slug}/`, `/${routes[l]}/`)
+									.replace(`/${slug}`, `/${routes[l]}/`)
+							: currentPath
+									.replace(`/${locale}/`, `/${l}/`)
+									.replace(`/${locale}`, `/${l}/`),
+					)}
+				>
+					{l}
+				</a>
+			</li>
 		))
 	}
 </ul>
