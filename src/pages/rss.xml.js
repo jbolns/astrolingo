@@ -7,7 +7,7 @@ export async function GET(context) {
 	const posts = await getCollection('blog');
 	return rss({
 		title: site.title[defaultLang],
-		description: SITE.description[defaultLang],
+		description: site.description[defaultLang],
 		site: context.site,
 		items: posts.map((post) => ({
 			...post.data,
