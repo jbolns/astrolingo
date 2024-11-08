@@ -1,6 +1,7 @@
 ---
 title: 'FI paikkamerkki 2'
 description: 'Toinen blogi FI'
+locale: "fi"
 pubDate: 'Jul 15 2022'
 heroImage: '/blog-placeholder-4.jpg'
 tags: ["elämää", "elokuvia"]

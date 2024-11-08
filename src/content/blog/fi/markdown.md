@@ -1,6 +1,7 @@
 ---
 title: 'Markdown-tyylit'
 description: 'Markdown-perussyntaksi, jota voidaan käyttää kirjoitettaessa Markdown-sisältöä Astrossa.'
+locale: "fi"
 pubDate: 'Jun 19 2024'
 heroImage: '/blog-placeholder-1.jpg'
 tags: ["ohjelmointi", "kieliä"]

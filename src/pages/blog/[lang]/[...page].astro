@@ -7,18 +7,19 @@ import { type GetStaticPathsOptions } from "astro";
 // Modules
 import CategoriesPreview from "@components/CategoriesPreview.astro";
 import BlogEntryPreview from "@components/BlogEntryPreview.astro";
-import BlogRollLayout from "@layouts/BlogRoll.astro";
+import BlogRollLayout from "@layouts/BlogRollLayout.astro";
 
 // Config & content
 import { languages, defaultLang } from "@i18n/ui";
 
 // TYPES
 import type { Multi } from "@types";
+import Pagination from "@components/Pagination.astro";
 type Post = CollectionEntry<"blog">;
 
 // FUNCTIONS & ACTIONS
 // Identify page language
-const LOCALE: keyof Multi = Astro.currentLocale || defaultLang;
+const locale: keyof Multi = Astro.currentLocale || defaultLang;
 
 // Dynamic routing with pagination
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
@@ -30,11 +31,11 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 	);
 
 	let splitTags: string[][] = [];
-	Object.keys(languages).map((LOCALE) => {
+	Object.keys(languages).map((locale) => {
 		const tags = [
 			...new Set(
 				posts
-					.filter((post) => post.slug.startsWith(LOCALE))
+					.filter((post) => post.slug.startsWith(locale))
 					.map((post) => post.data.tags)
 					.flat(),
 			),
@@ -42,7 +43,7 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 		splitTags.push(tags);
 	});
 
-	// Return posts by LOCALE, paginated
+	// Return posts by locale, paginated
 	return Object.keys(languages).flatMap((lang) => {
 		const filteredPosts = posts.filter(
 			(a: { slug: string }) => a.slug.split("/")[0] === lang,
@@ -59,11 +60,12 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 const { splitTags, page } = Astro.props;
 ---
 
-<BlogRollLayout page={page}>
-	<CategoriesPreview tags={splitTags} LOCALE={LOCALE} />
+<BlogRollLayout page={page} tags={splitTags} locale={locale} section="Blog">
+	<CategoriesPreview tags={splitTags} locale={locale} />
 	<section class="blogroll">
 		<ul>
 			{page.data.map((post: Post) => <BlogEntryPreview post={post} />)}
 		</ul>
 	</section>
+	<Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
 </BlogRollLayout>

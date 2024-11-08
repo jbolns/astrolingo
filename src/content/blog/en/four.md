@@ -1,6 +1,7 @@
 ---
 title: 'EN placeholder 4'
 description: 'Fourth post in English'
+locale: "en"
 pubDate: 'Jul 21 2022'
 heroImage: '/blog-placeholder-3.jpg'
 tags: ["life", "coding"]

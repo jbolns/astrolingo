@@ -1,6 +1,7 @@
 ---
 title: 'ES Relleno 2'
 description: 'Post de relleno en Español'
+locale: "es"
 pubDate: 'Jul 15 2022'
 heroImage: '/blog-placeholder-4.jpg'
 tags: ["vida", "películas"]

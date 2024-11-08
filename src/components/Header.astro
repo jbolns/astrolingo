@@ -1,37 +1,43 @@
 ---
-import LanguagePicker from "./LanguagePicker.astro";
+import MainNavLangs from "./MainNavLangs.astro";
 import HeaderLink from "./HeaderLink.astro";
-import { SITE } from "@i18n/sections";
-
-import { defaultLang, navLinks } from "@i18n/ui";
+import { site } from "@i18n/sections";
+import { navLinks, listOfCollections } from "@i18n/ui";
 import { sanitizeRoutes } from "@i18n/utils";
-import type { Multi } from "@types";
 
-const LOCALE: keyof Multi = Astro.currentLocale || defaultLang;
-console.log(LOCALE)
-const links = navLinks.filter((link) => link.LANGUAGES.includes(LOCALE));
+// ACTIONS
+// Get locale
+const { locale } = Astro.props;
+
+const links = navLinks.filter((link) => link.languages.includes(locale));
 ---
 
 <header>
 	<nav>
 		<div class="logoname">
 			<h2>
-				<a href={"/" + LOCALE + "/"}>
-					{SITE.TITLE[LOCALE]}
+				<a href={"/" + locale + "/"}>
+					{site.title[locale]}
 				</a>
 			</h2>
 		</div>
 		<div class="internal-links">
 			{
 				links.map((link) => (
-					<HeaderLink href={sanitizeRoutes("/" + LOCALE + link.HREF + "/")}>
-						{link.TEXT}
+					<HeaderLink
+						href={
+							listOfCollections.includes(link.text.toLowerCase())
+								? sanitizeRoutes(`${link.href}/${locale}/`)
+								: sanitizeRoutes(`/${locale}/${link.href}`)
+						}
+					>
+						{link.text}
 					</HeaderLink>
 				))
 			}
 		</div>
 		<div class="language-picker">
-			<LanguagePicker />
+			<MainNavLangs locale={locale} />
 		</div>
 	</nav>
 </header>

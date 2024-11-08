@@ -1,6 +1,7 @@
 ---
 title: 'FI paikkamerkki 5'
 description: 'Viides blogi FI'
+locale: "fi"
 pubDate: 'Jul 22 2022'
 heroImage: '/blog-placeholder-2.jpg'
 tags: ["elokuvia", "ohjelmointi", "elämää"]

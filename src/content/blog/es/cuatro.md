@@ -1,6 +1,7 @@
 ---
 title: 'ES Relleno 4'
 description: 'Post de relleno en Español'
+locale: "es"
 pubDate: 'Jul 21 2022'
 heroImage: '/blog-placeholder-3.jpg'
 tags: ["vida", "programación"]

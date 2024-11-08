@@ -1,6 +1,7 @@
 ---
 title: 'Estilos Markdown'
 description: 'Guía sintáxica básica de Markdown.'
+locale: "es"
 pubDate: 'Jun 19 2024'
 heroImage: '/blog-placeholder-1.jpg'
 tags: ["programación", "idiomas"]

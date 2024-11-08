@@ -1,27 +1,25 @@
 ---
 // IMPORTS
-// Config & content
+type MultiArray = { [key: string]: string[] };
 import { languages } from "@i18n/ui";
 
-// TYPES
-type MultiArray = { [key: string]: string[] };
-
-// FUNCTIONS & ACTIONS
-const { tags, LOCALE } = Astro.props;
+// ACTIONS
+const { tags, locale, current } = Astro.props;
 
 let dict: MultiArray = {};
 Object.keys(languages).map((locale, i) => {
   dict[locale] = tags[i];
 });
 
-const filteredTags = dict[LOCALE].sort((a, b) => b.localeCompare(a));
+const filteredTags = dict[locale].sort((a, b) => b.localeCompare(a));
+
 ---
 
 <ul class="tagcloud">
   {
     filteredTags.map((tag: string) => (
-      <li>
-        <a href={`/${LOCALE}/tags/${tag}`}>{tag}</a>
+      <li class={`${tag === current ? "active" : ""}`}>
+        <a href={`/tags/${locale}/${tag}`}>{tag}</a>
       </li>
     ))
   }

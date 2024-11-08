@@ -1,26 +1,22 @@
 ---
 // IMPORTS
-// Components
+import type { Multi } from "@types";
 import BaseHead from "@components/BaseHead.astro";
-
-// Config & content
-import { SITE } from "@i18n/sections";
+import { site } from "@i18n/sections";
 import { languages, defaultLang } from "@i18n/ui";
 import { sanitizeRoutes } from "@i18n/utils";
 
-// TYPES
-import type { Multi } from "@types";
-
-// FUNCTIONS & ACTIONS
-const LOCALE: keyof Multi = Astro.currentLocale || defaultLang;
+// ACTIONS
+const locale: keyof Multi = defaultLang;
 ---
 
 <!doctype html>
-<html lang={LOCALE}>
+<html lang={locale}>
   <head>
     <BaseHead
-      title={SITE.TITLE[LOCALE]}
-      description={SITE.DESCRIPTION[LOCALE]}
+      title={site.title[locale]}
+      description={site.description[locale]}
+      locale={locale}
     />
   </head>
   <body>
@@ -28,7 +24,7 @@ const LOCALE: keyof Multi = Astro.currentLocale || defaultLang;
       <ul class="language-picker">
         {
           Object.entries(languages).map(([lang, label]) => (
-            <li>
+            <li aria-label={label}>
               <a href={sanitizeRoutes(`/${lang}/`)}>{label}</a>
             </li>
           ))

@@ -6,14 +6,14 @@ interface Props {
 	date: Date;
 }
 
-const LOCALE: keyof Multi = Astro.currentLocale || defaultLang;
+const locale: keyof Multi = Astro.currentLocale || defaultLang;
 const { date } = Astro.props;
 
 ---
 
 <time datetime={date.toISOString()}>
 	{
-		date.toLocaleDateString(LOCALE, {
+		date.toLocaleDateString(locale, {
 			year: 'numeric',
 			month: 'short',
 			day: 'numeric',

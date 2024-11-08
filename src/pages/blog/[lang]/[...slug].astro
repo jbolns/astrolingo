@@ -1,12 +1,9 @@
 ---
 // IMPORTS
-// Astro
 import { type CollectionEntry, getCollection } from "astro:content";
+import BlogPostLayout from "@layouts/BlogPostLayout.astro";
 
-// Components
-import BlogPost from "@layouts/BlogPost.astro";
-
-// FUNCTIONS & ACTIONS
+// ACTIONS
 // Dynamic routing
 export async function getStaticPaths() {
 
@@ -24,10 +21,11 @@ export async function getStaticPaths() {
 	return paths;
 }
 
+// Assemble
 const post: CollectionEntry<"blog"> = Astro.props;
 const { Content } = await post.render();
 ---
 
-<BlogPost {...post.data}>
+<BlogPostLayout {...post.data}>
 	<Content />
-</BlogPost>
+</BlogPostLayout>

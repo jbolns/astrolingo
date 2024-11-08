@@ -8,9 +8,9 @@ const { post } = Astro.props;
 ---
 
 <li>
-	<a href={`/${post.slug.split("/")[0]}/${post.collection}/${post.slug.split("/")[1]}`}>
+	<a href={`/${post.collection}/${post.slug}/`}>
 		<img width={720} height={360} src={post.data.heroImage} alt="" />
-		<h4 class="title">{post.data.title}</h4>
+		<h2 class="title">{post.data.title}</h2>
 		<p class="date">
 			<FormattedDate date={post.data.pubDate} />
 		</p>

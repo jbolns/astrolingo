@@ -1,6 +1,7 @@
 ---
 title: 'FI paikkamerkki 4'
 description: 'Neljäs blogi FI'
+locale: "fi"
 pubDate: 'Jul 21 2022'
 heroImage: '/blog-placeholder-3.jpg'
 tags: ["elämää", "ohjelmointi"]

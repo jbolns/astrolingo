@@ -1,13 +1,13 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
-import { SITE } from "@i18n/sections";
+import { site } from "@i18n/sections";
 import { defaultLang } from "@i18n/ui";
 
 export async function GET(context) {
 	const posts = await getCollection('blog');
 	return rss({
-		title: SITE.TITLE[defaultLang],
-		description: SITE.DESCRIPTION[defaultLang],
+		title: site.title[defaultLang],
+		description: SITE.description[defaultLang],
 		site: context.site,
 		items: posts.map((post) => ({
 			...post.data,

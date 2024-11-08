@@ -1,6 +1,7 @@
 ---
 title: 'EN placeholder 1'
 description: 'First post in English'
+locale: "en"
 pubDate: 'Jul 08 2022'
 heroImage: '/blog-placeholder-3.jpg'
 tags: ["life", "coding"]

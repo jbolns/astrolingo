@@ -1,13 +1,21 @@
 ---
 // IMPORTS
-// Components
-import Layout from "@layouts/SimplePage.astro";
+import type { Multi } from "@types";
+import SimplePageLayout from "@layouts/SimplePageLayout.astro";
+import { defaultLang } from "@i18n/ui";
+import { site } from "@i18n/sections";
+
+// ACTIONS
+const locale: keyof Multi = Astro.currentLocale || defaultLang;
+const heroImage = "/blog-placeholder-1.jpg";
 ---
 
-<Layout
-  title="Acerca"
-  description="Página acerca para el idioma Español."
-  heroImage="/blog-placeholder-about.jpg"
+<SimplePageLayout
+  title={site.title[locale]}
+  description={site.description[locale]}
+  pageTitle="Acerca"
+  locale={locale}
+  heroImage={heroImage}
 >
   <p><strong>Acerca en Español.</strong></p>
 
@@ -38,4 +46,4 @@ import Layout from "@layouts/SimplePage.astro";
     ut. Vestibulum id libero eget felis fermentum vehicula in imperdiet orci. In
     tempor purus non eros euismod, non sodales risus blandit.
   </p>
-</Layout>
+</SimplePageLayout>

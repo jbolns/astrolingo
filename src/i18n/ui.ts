@@ -15,6 +15,8 @@ export const languages: Multi = {
 // DEFAULT LANGUAGE
 export const defaultLang = 'en';
 
+// COLLECTION NAMES
+export const listOfCollections = ["blog"]
 
 // TOP-LEVEL NAVIGATION
 //
@@ -23,43 +25,52 @@ export const defaultLang = 'en';
 //  - HREF (where link points to)
 //  - LANGUAGES (array) (languages where item will show)
 //    - E.g.
-//      - `LANGUAGES: ["es"]` => item shows only on "es" version of site.
-//      - `LANGUAGES: ["es", "en"]` => item shows on "es" and "en" versions of site.
+//      - `languages: ["es"]` => item shows only on "es" version of site.
+//      - `languages: ["es", "en"]` => item shows on "es" and "en" versions of site.
 
 export const navLinks: Links = [
   {
-    TEXT: "Home",
-    HREF: "/",
-    LANGUAGES: ["en"]
+    text: "Home",
+    href: "/",
+    languages: ["en"]
   },
   {
-    TEXT: "Inicio",
-    HREF: "/",
-    LANGUAGES: ["es"]
+    text: "Inicio",
+    href: "/",
+    languages: ["es"]
   },
   {
-    TEXT: "Etusivu",
-    HREF: "/",
-    LANGUAGES: ["fi"]
+    text: "Etusivu",
+    href: "/",
+    languages: ["fi"]
   },
   {
-    TEXT: "Blog",
-    HREF: "/blog",
-    LANGUAGES: ["en", "es", "fi"]
+    text: "Blog",
+    href: "/blog",
+    languages: ["en", "es", "fi"]
   },
   {
-    TEXT: "About",
-    HREF: "/about",
-    LANGUAGES: ["en"]
+    text: "About",
+    href: "/about",
+    languages: ["en"]
   },
   {
-    TEXT: "Acerca",
-    HREF: "/acerca",
-    LANGUAGES: ["es"]
+    text: "Acerca",
+    href: "/acerca",
+    languages: ["es"]
   },
   {
-    TEXT: "Minusta",
-    HREF: "/minusta",
-    LANGUAGES: ["fi"]
+    text: "Minusta",
+    href: "/minusta",
+    languages: ["fi"]
   },
 ]
+
+
+// MISC STRINGS USED ACROSS WEBSITE
+// Strings for OG spaces in header
+export const ogStrings: Multi = {
+  en: "en_GB",
+  es: "es_ES",
+  fi: "fi_FI"
+}

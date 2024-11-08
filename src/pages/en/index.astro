@@ -1,86 +1,66 @@
 ---
 // IMPORTS
-// Components
-import BaseHead from "@components/BaseHead.astro";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
-
-// Config & content
-import { SITE } from "@i18n/sections";
+import type { Multi } from "@types";
+import SimplePageLayout from "@layouts/SimplePageLayout.astro";
+import { site } from "@i18n/sections";
 import { defaultLang } from "@i18n/ui";
 
-// TYPES
-import type { Multi } from "@types";
-
-// FUNCTIONS & ACTIONS
-const LOCALE: keyof Multi = Astro.currentLocale || defaultLang;
+// ACTIONS
+const locale: keyof Multi = Astro.currentLocale || defaultLang;
 ---
 
-<!doctype html>
-<html lang={LOCALE}>
-  <head>
-    <BaseHead
-      title={SITE.TITLE[LOCALE]}
-      description={SITE.DESCRIPTION[LOCALE]}
-    />
-  </head>
-  <body>
-    <Header />
-    <main>
-      <h1>🧑‍🚀 Hello, multilingual Astronaut!</h1>
+<SimplePageLayout
+  title={site.title[locale]}
+  description={site.description[locale]}
+  pageTitle="🧑‍🚀 Hello, multilingual Astronaut!"
+  locale={locale}
+>
+  
+  <p>
+    <strong>AstroLingo</strong> is an unofficial <a href="https://astro.build/"
+      >Astro</a
+    > starter theme. It adds multilingual support to Astro's <a
+      href="https://astro.build/themes/details/blog/"
+      >minimalistic blog template</a
+    >, without adding enormous code complexity.
+  </p>
 
-      <p>
-        <strong>AstroLingo</strong> is an unofficial <a
-          href="https://astro.build/">Astro</a
-        > starter theme. It adds multilingual support to Astro's <a
-          href="https://astro.build/themes/details/blog/"
-          >minimalistic blog template</a
-        >, while keeping the code simple and tidy.
-      </p>
+  <p>New languages are easy to add.</p>
 
-      <p>
-        The theme has been tested with up to three languages, but it can handle
-        more. New languages can be added easily and over time.
-      </p>
+  <h2>Features</h2>
+  <strong>Inherited from Astro's minimalistic blog template:</strong>
+  <ul>
+    <li>✅ Minimal styling (make it your own!)</li>
+    <li>✅ 100/100 Lighthouse performance</li>
+    <li>✅ SEO-friendly with canonical URLs and OpenGraph data</li>
+    <li>✅ Sitemap support</li>
+    <li>✅ RSS Feed support</li>
+    <li>✅ Markdown & MDX support.</li>
+  </ul>
 
-      <h2>Features</h2>
-      <strong>Inherited from Astro's minimalistic blog template:</strong>
-      <ul>
-        <li>✅ Minimal styling (make it your own!)</li>
-        <li>✅ 100/100 Lighthouse performance</li>
-        <li>✅ SEO-friendly with canonical URLs and OpenGraph data</li>
-        <li>✅ Sitemap support</li>
-        <li>✅ RSS Feed support</li>
-        <li>✅ Markdown & MDX support.</li>
-      </ul>
-
-      <strong>Added features:</strong>
-      <ul>
-        <li>✅ Multilingual pages</li>
-        <li>✅ Multilingual blogs</li>
-        <li>✅ Multilingual tags</li>
-        <li>✅ Multilingual paths</li>
-        <li>✅ Multilingual pagination (blogs and tags)</li>
-        <li>
-          ✅ Independently customisable pages (pages in different languages can
-          have their own styles).
-        </li>
-      </ul>
-      <p>Have fun!</p>
-      <p>---</p>
-      <p>
-        Ps1. More detailed guidance is available on <a
-          href="https://github.com/jbolns/astrolingo"
-          target="_blank">GitHub</a
-        >.
-      </p>
-      <p>
-        Ps2. Check <a href="https://www.josebolanos.xyz/" target="_blank"
-          >my website</a
-        > for an example of how to take AstroLingo next level.
-      </p>
-    </main>
-
-    <Footer />
-  </body>
-</html>
+  <strong>Added features:</strong>
+  <ul>
+    <li>✅ Multilingual pages</li>
+    <li>✅ Multilingual blogs</li>
+    <li>✅ Multilingual tags</li>
+    <li>✅ Multilingual paths</li>
+    <li>✅ Multilingual pagination (blogs and tags)</li>
+    <li>
+      ✅ Independently customisable pages (pages in different languages can have
+      their own styles).
+    </li>
+  </ul>
+  <p>Have fun!</p>
+  <p>---</p>
+  <p>
+    Ps1. More detailed guidance is available on <a
+      href="https://github.com/jbolns/astrolingo"
+      target="_blank">GitHub</a
+    >.
+  </p>
+  <p>
+    Ps2. Check <a href="https://www.josebolanos.xyz/" target="_blank"
+      >my website</a
+    > for an example of how to take AstroLingo next level.
+  </p>
+</SimplePageLayout>

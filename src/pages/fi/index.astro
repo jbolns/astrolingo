@@ -1,88 +1,71 @@
 ---
 // IMPORTS
-// Components
-import BaseHead from "@components/BaseHead.astro";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
-
-// Config & content
-import { SITE } from "@i18n/sections";
+import type { Multi } from "@types";
+import SimplePageLayout from "@layouts/SimplePageLayout.astro";
+import { site } from "@i18n/sections";
 import { defaultLang } from "@i18n/ui";
 
-// TYPES
-import type { Multi } from "@types";
-
-// FUNCTIONS & ACTIONS
-const LOCALE: keyof Multi = Astro.currentLocale || defaultLang;
+// ACTIONS
+const locale: keyof Multi = Astro.currentLocale || defaultLang;
 ---
 
-<!doctype html>
-<html lang={LOCALE}>
-  <head>
-    <BaseHead
-      title={SITE.TITLE[LOCALE]}
-      description={SITE.DESCRIPTION[LOCALE]}
-    />
-  </head>
-  <body>
-    <Header />
-    <main>
-      <h1>🧑‍🚀 Moi, monikielinen Astronautti!</h1>
+<SimplePageLayout
+  title={site.title[locale]}
+  description={site.description[locale]}
+  pageTitle="🧑‍🚀 Moi, monikielinen Astronautti!"
+  locale={locale}
+>
+  <p>
+    <strong>AstroLingo</strong> on epävirallinen <a href="https://astro.build/"
+      >Astro</a
+    > aloitusmalli. Se lisää monikielisen tuen Astron <a
+      href="https://astro.build/themes/details/blog/"
+      >minimalistiseen blogimalliin</a
+    >.
+  </p>
 
-      <p>
-        <strong>AstroLingo</strong> on epävirallinen <a
-          href="https://astro.build/">Astro</a
-        > aloitusmalli. Se lisää monikielisen tuen Astron <a
-          href="https://astro.build/themes/details/blog/"
-          >minimalistiseen blogimalliin</a
-        >.
-      </p>
+  <p>
+    Mallia on testattu jopa kolmella kielellä, mutta se pystyy käsittelemään
+    enemmänkin. Uusia kieliä voidaan lisätä helposti.
+  </p>
 
-      <p>
-        Mallia on testattu jopa kolmella kielellä, mutta se pystyy käsittelemään
-        enemmänkin. Uusia kieliä voidaan lisätä helposti.
-      </p>
+  <h2>Ominaisuudet</h2>
+  <strong>Peritty Astron minimalistisesta blogimallista:</strong>
+  <ul>
+    <li>✅ Minimaalinen muotoilu (tee siitä omasi!)</li>
+    <li>✅ 100/100 Lighthouse suorituskyky</li>
+    <li>
+      ✅ SEO-ystävällinen kanonisten URL-osoitteiden ja OpenGraph-tietojen
+      ansiosta
+    </li>
+    <li>✅ Sivustokartan tuki</li>
+    <li>✅ RSS-tuki</li>
+    <li>✅ Markdown & MDX-tuki.</li>
+  </ul>
 
-      <h2>Ominaisuudet</h2>
-      <strong>Peritty Astron minimalistisesta blogimallista:</strong>
-      <ul>
-        <li>✅ Minimaalinen muotoilu (tee siitä omasi!)</li>
-        <li>✅ 100/100 Lighthouse suorituskyky</li>
-        <li>
-          ✅ SEO-ystävällinen kanonisten URL-osoitteiden ja OpenGraph-tietojen
-          ansiosta
-        </li>
-        <li>✅ Sivustokartan tuki</li>
-        <li>✅ RSS-tuki</li>
-        <li>✅ Markdown & MDX-tuki.</li>
-      </ul>
-
-      <strong>Lisäominaisuudet:</strong>
-      <ul>
-        <li>✅ Monikieliset sivut</li>
-        <li>✅ Monikieliset blogit</li>
-        <li>✅ Monikieliset tunnisteet</li>
-        <li>✅ Monikieliset URL-osoitteet</li>
-        <li>✅ Monikielinen sivutus (blogit ja tagit)</li>
-        <li>
-          ✅ Itsenäisesti muokattavissa olevat sivut (erikielisillä sivuilla voi
-          olla omat tyylinsä).
-        </li>
-      </ul>
-      <p>Pidä hauskaa!</p>
-      <p>---</p>
-      <p>
-        Ps. Tarkemmat ohjeet saatavilla <a
-          href="https://github.com/jbolns/astrolingo"
-          target="_blank">GitHubissa</a
-        >.
-      </p>
-      <p>
-        Pps. Katso <a href="https://www.josebolanos.xyz/" target="_blank"
-          >kotisivuiltani</a
-        > esimerkki siitä, mitä voit tehdä AstroLingolla.
-      </p>
-    </main>
-    <Footer />
-  </body>
-</html>
+  <strong>Lisäominaisuudet:</strong>
+  <ul>
+    <li>✅ Monikieliset sivut</li>
+    <li>✅ Monikieliset blogit</li>
+    <li>✅ Monikieliset tunnisteet</li>
+    <li>✅ Monikieliset URL-osoitteet</li>
+    <li>✅ Monikielinen sivutus (blogit ja tagit)</li>
+    <li>
+      ✅ Itsenäisesti muokattavissa olevat sivut (erikielisillä sivuilla voi
+      olla omat tyylinsä).
+    </li>
+  </ul>
+  <p>Pidä hauskaa!</p>
+  <p>---</p>
+  <p>
+    Ps. Tarkemmat ohjeet saatavilla <a
+      href="https://github.com/jbolns/astrolingo"
+      target="_blank">GitHubissa</a
+    >.
+  </p>
+  <p>
+    Pps. Katso <a href="https://www.josebolanos.xyz/" target="_blank"
+      >kotisivuiltani</a
+    > esimerkki siitä, mitä voit tehdä AstroLingolla.
+  </p>
+</SimplePageLayout>

@@ -14,10 +14,14 @@ import type { Multi } from "@types"
 // If the slug is the same across **all** languages, redirection happens automatically.
 
 export const routes: Multi[] = [
-  { en: "about", es: "acerca", fi: "minusta" },
-  { en: "blog/one", es: "blog/uno", fi: "blog/yksi" },
-  { en: "blog/two", es: "blog/dos", fi: "blog/kaksi" },
-  { en: "blog/three", es: "blog/tres", fi: "blog/kolme" },
-  { en: "blog/four", es: "blog/cuatro", fi: "blog/nelja" },
-  { en: "blog/five", es: "blog/cinco", fi: "blog/viisi" },
+  { en: "about", es: "acerca", fi: "minusta" },  // Top-level page equivalence
+  { en: "one", es: "uno", fi: "yksi" },  // Blog equivalence
+  { en: "two", es: "dos", fi: "kaksi" },  // Blog equivalence
+  { en: "three", es: "tres", fi: "kolme" },  // Blog equivalence
+  { en: "four", es: "cuatro", fi: "nelja" },  // Blog equivalence
+  { en: "five", es: "cinco", fi: "viisi" },  // Blog equivalence
+  { en: "coding", es: "programación", fi: "koodaus" },  // Tag equivalence
+  { en: "movies", es: "cine", fi: "elokuvia" },  // Tag equivalence
+  { en: "life", es: "vida", fi: "elämää" },  // Tag equivalence
+  { en: "languages", es: "idiomas", fi: "kieliä" },  // Tag equivalence
 ]

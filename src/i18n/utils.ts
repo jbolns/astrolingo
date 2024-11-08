@@ -14,24 +14,8 @@ import type { Multi } from "@types"
 //    a. YES (page url varies across languages): Return a dictionary with appropriate paths for all languages (object)
 //    b. NO (page url is same across languages). Return the slug (string).
 
-export function getRoutes(url: URL, currentLang: string): Multi | string {
-  const pathname = new URL(url).pathname
-  const parts = pathname?.split('/')
-
-  const slug = parts.pop() || parts.pop()
-  const collection = parts.pop() || parts.pop()
-  let path = "" // Gets re-written in normal cases, but line avoids a possibly undefined path
-
-  if ((collection !== undefined && !Object.keys(languages).includes(collection))) {
-    path = collection + '/' + slug
-  } else if (slug !== undefined) {
-    path = slug
-  }
-
-  Object.keys(languages).map(
-    key => (path = path.replace(key + "/", ""))
-  )
-
+export function getRoutes(slug = ""): Multi | string {
+  
   if (slug === undefined) {
     console.log("Path sent to language picker is undefined.")
     return ''
@@ -41,8 +25,17 @@ export function getRoutes(url: URL, currentLang: string): Multi | string {
     return ''
   }
 
-  const filtered = Object.values(routes).filter((route) => route[currentLang].split("/").pop() === (slug))
-  return filtered.length > 0 ? filtered[0] : path
+  let match = -1
+
+  const allRoutes = Object.values(routes)
+  allRoutes.forEach((group,i) => Object.values(group).map((val) => {
+    return val === decodeURI(slug) ? match = i : ""
+  }))
+  
+  let group
+  match >= 0 ? group = allRoutes[match] : ""  
+
+  return group ? group : "--"
 
 }
 

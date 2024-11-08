@@ -1,9 +1,9 @@
 ---
-import { defaultLang } from "@i18n/ui";
-import { SITE } from "@i18n/sections";
-import type { Multi } from "@types";
+// IMPORTS
+import { site } from "@i18n/sections";
 
-const LOCALE: keyof Multi = Astro.currentLocale || defaultLang;
+// ACTIONS
+const { locale } = Astro.props;
 const today = new Date();
 
 // SVG paths from: https://simpleicons.org*/
@@ -11,7 +11,7 @@ const today = new Date();
 
 <footer>
 	&copy; {today.getFullYear()}
-	{SITE.AUTHOR[LOCALE]}. All rights reserved.
+	{site.author[locale]}. All rights reserved.
 	<div class="social-links">
 		<a href="https://www.linkedin.com/in/jbolns/" target="_blank">
 			<span class="sr-only">Connect on LinkedIn</span>

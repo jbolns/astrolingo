@@ -1,26 +1,34 @@
 ---
 // IMPORTS
-// Components
-import Layout from "@layouts/SimplePage.astro";
+import type { Multi } from "@types";
+import SimplePageLayout from "@layouts/SimplePageLayout.astro";
+import { defaultLang } from "@i18n/ui";
+import { site } from "@i18n/sections";
 
+// ACTIONS
+const locale: keyof Multi = Astro.currentLocale || defaultLang;
+const heroImage = "/blog-placeholder-1.jpg";
 ---
 
-<Layout
-  title="About"
-  description="About page for the English language."
-  heroImage="/blog-placeholder-about.jpg"
+<SimplePageLayout
+  title={site.title[locale]}
+  description={site.description[locale]}
+  pageTitle="About"
+  locale={locale}
+  heroImage={heroImage}
 >
-  <p>This is the about page for the <strong>English</strong> language.
-  </p>
+
+  <p>This is the about page for the <strong>English</strong> language.</p>
 
   <p>
-    Lorem ipsum dolor sit amet,
-    consectetur adipiscing elit. Suspendisse et risus quam. Ut elit tellus, consequat
-    eu ornare sit amet, sagittis nec mauris. <strong>Etiam luctus venenatis condimentum.
-    Cras congue ut mauris in rutrum. Nulla congue bibendum posuere.</strong> Suspendisse posuere,
-    arcu in tempus elementum, augue ante rutrum est, vitae dignissim dui nibh blandit
-    enim. Duis malesuada sollicitudin sapien vel maximus. Vestibulum dictum euismod
-    tristique. In quis augue commodo risus placerat fringilla.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et
+    risus quam. Ut elit tellus, consequat eu ornare sit amet, sagittis nec
+    mauris. <strong
+      >Etiam luctus venenatis condimentum. Cras congue ut mauris in rutrum.
+      Nulla congue bibendum posuere.</strong
+    > Suspendisse posuere, arcu in tempus elementum, augue ante rutrum est, vitae
+    dignissim dui nibh blandit enim. Duis malesuada sollicitudin sapien vel maximus.
+    Vestibulum dictum euismod tristique. In quis augue commodo risus placerat fringilla.
   </p>
 
   <p>
@@ -39,4 +47,4 @@ import Layout from "@layouts/SimplePage.astro";
     ut. Vestibulum id libero eget felis fermentum vehicula in imperdiet orci. In
     tempor purus non eros euismod, non sodales risus blandit.
   </p>
-</Layout>
+</SimplePageLayout>

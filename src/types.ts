@@ -12,27 +12,27 @@ export interface Multi {
 
 // Page information
 export type Page = {
-  TITLE: Multi
-  DESCRIPTION: Multi
+  title: Multi
+  description: Multi
 }
 
 // Site information
 export interface Site extends Page {
-  AUTHOR: Multi
-  CONTACT: Multi
+  author: Multi
+  contact: Multi
 }
 
 // Top-level navigation links
 export type Links = {
-  TEXT: string
-  HREF: string
-  LANGUAGES: string[]
+  text: string
+  href: string
+  languages: string[]
 }[]
 
 // Social media links
 export type Socials = {
-  NAME: string
-  ICON: string
-  TEXT: string
-  HREF: string
+  name: string
+  icon: string
+  text: string
+  href: string
 }[]

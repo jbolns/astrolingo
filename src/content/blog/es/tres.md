@@ -1,6 +1,7 @@
 ---
 title: 'ES Relleno 3'
 description: 'Post de relleno en Español'
+locale: "es"
 pubDate: 'Jul 20 2022'
 heroImage: '/blog-placeholder-2.jpg'
 tags: ["películas", "programación"]

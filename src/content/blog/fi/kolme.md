@@ -1,6 +1,7 @@
 ---
 title: 'FI paikkamerkki 3'
 description: 'Kolmas blogi FI'
+locale: "fi"
 pubDate: 'Jul 20 2022'
 heroImage: '/blog-placeholder-2.jpg'
 tags: ["elokuvia", "ohjelmointi"]

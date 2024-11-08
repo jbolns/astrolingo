@@ -101,10 +101,6 @@ p {
 	margin-bottom: 1em;
 }
 
-.prose p {
-	margin-bottom: 2em;
-}
-
 textarea {
 	width: 100%;
 	font-size: 16px;
@@ -241,18 +237,18 @@ nav a.active {
 
 .language-picker {
 	list-style-type: none;
-	font-size: small;
-}
-
-.language-picker ul {
-	flex-wrap: nowrap;
-	gap: 0;
+	font-size: medium;
+	text-transform: uppercase;
 }
 
 .language-picker li,
 .language-picker a {
 	display: inline;
-	margin: 0;
+	border: 1px dotted black;
+	margin: auto 2px;
+	padding: 7px;
+	text-align: center;
+	background-color: aquamarine;
 }
 
 /* Blog listings */
@@ -267,25 +263,22 @@ nav a.active {
 
 .blogroll ul li {
 	width: calc(50% - 1rem);
+	text-align: center;
 }
 
-.blogroll ul li * {
+.blogroll ul li > * {
 	text-decoration: none;
 	transition: 0.2s ease;
 }
 
+.blogroll .title {
+	font-size: 2.369rem;
+	padding: 0;
+	margin-bottom: 0;
+}
+
 .blogroll ul li:first-child {
 	width: 100%;
-	margin-bottom: 1rem;
-	text-align: center;
-}
-
-.blogroll ul li:first-child img {
-	width: 100%;
-}
-
-.blogroll ul li:first-child .title {
-	font-size: 2.369rem;
 }
 
 .blogroll ul li img {
@@ -293,22 +286,12 @@ nav a.active {
 	border-radius: 12px;
 }
 
-.blogroll ul li a {
-	display: block;
-}
-
-.blogroll .title {
-	margin: 0;
-	color: rgb(var(--black));
-	line-height: 1;
-}
-
 .blogroll .date {
-	margin: 0;
+	margin-top: 0;
 	color: rgb(var(--gray));
 }
 
-.blogroll ul li a:hover h4,
+.blogroll ul li a:hover h2,
 .blogroll ul li a:hover .date {
 	color: rgb(var(--accent));
 }
@@ -352,7 +335,7 @@ nav a.active {
 	box-shadow: var(--box-shadow);
 }
 
-.blogpost .prose {
+.prose {
 	width: 720px;
 	max-width: calc(100% - 2em);
 	margin: auto;
@@ -360,7 +343,7 @@ nav a.active {
 	color: rgb(var(--gray-dark));
 }
 
-.blogpost .title {
+.title {
 	margin-bottom: 1em;
 	padding: 1em 0;
 	text-align: center;
@@ -368,11 +351,11 @@ nav a.active {
 }
 
 .blogpost .title h1 {
-	margin: 0 0 0.5em 0;
+	margin-bottom: 0;
+	padding-bottom: 0;
 }
 
 .blogpost .date {
-	margin-bottom: 0.5em;
 	color: rgb(var(--gray));
 }
 
@@ -416,12 +399,10 @@ footer {
 }
 
 .pagination ul li {
-	padding: 14px;
+	padding: 1em;
 	text-align: center;
+	text-transform: uppercase;
 	border: 1px dotted;
-	background: linear-gradient(90deg, rgb(156, 33, 238) 0%, rgb(22, 173, 166) 50%);
-	background-size: 400% 400%;
-	animation: PaginationAnimation 45s ease infinite;
 }
 
 @keyframes PaginationAnimation {
@@ -436,10 +417,6 @@ footer {
 	100% {
 		background-position: 1% 0%
 	}
-}
-
-.pagination a {
-	font-size: xx-large;
 }
 
 /* Main welcome page (shared index.astro) */
