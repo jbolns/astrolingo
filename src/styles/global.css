@@ -410,6 +410,11 @@ footer {
 	font-weight: 600;
 }
 
+.welcome .language-picker {	
+	margin: 0;
+	padding: 0;
+}
+
 /* Responsive adjustments */
 @media (max-width: 720px) {
 	main ul {
