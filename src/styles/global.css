@@ -304,7 +304,6 @@ nav a.active {
 	display: inline-block;
 	list-style-type: none;
 	margin-bottom: 0 auto 21px;
-	border-radius: 7px;
 	padding-left: 0;
 	margin-left: 0;
 }
@@ -315,7 +314,6 @@ nav a.active {
 	padding: 14px;
 	text-transform: capitalize;
 	border: 1px dotted;
-	background: rgba(203, 182, 204, 0.5);
 }
 
 .tagcloud a {
@@ -405,42 +403,12 @@ footer {
 	border: 1px dotted;
 }
 
-@keyframes PaginationAnimation {
-	0% {
-		background-position: 1% 0%
-	}
-
-	50% {
-		background-position: 99% 100%
-	}
-
-	100% {
-		background-position: 1% 0%
-	}
-}
-
 /* Main welcome page (shared index.astro) */
 .welcome {
 	margin-top: 40vh;
 	text-align: center;
 	font-weight: 600;
 }
-
-.welcome .language-picker {	
-	margin: 0;
-	padding: 0;
-	font-size: x-large;
-}
-
-.welcome .language-picker li::after {
-	margin: 0 7px;
-	content: "|";
-}
-
-.welcome .language-picker li:last-child::after {
-	content: "";
-}
-
 
 /* Responsive adjustments */
 @media (max-width: 720px) {
@@ -460,7 +428,4 @@ footer {
 		font-size: 1.563em;
 	}
 
-	.welcome .language-picker {	
-		font-size: large;
-	}
 }
